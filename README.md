@@ -3,7 +3,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2508.07402-b31b1b.svg)](https://arxiv.org/pdf/2508.07402)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-Official PyTorch implementation of the paper.
+PyTorch implementation of the **New and Improved Version** of the paper.
 
 ---
 
