@@ -84,11 +84,13 @@ class MaskDecoder(nn.Module):
             mask_slice = slice(1, None)
         else:
             mask_slice = slice(0, 1)
+
+        gated_masks = gated_masks[:, mask_slice, :, :]
         masks = masks[:, mask_slice, :, :]
         iou_pred = iou_pred[:, mask_slice]
 
         # Prepare output
-        return masks, iou_pred
+        return gated_masks, masks, iou_pred, auth_logit
 
     def predict_masks(
         self,
