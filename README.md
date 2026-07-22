@@ -54,87 +54,6 @@ ForensicsSAM-released/
   <em>Figure 1: Overview of the proposed ForensicsSAM framework. Given an input image, ForensicsSAM outputs the image-level detection results (real or forged, clean or adversarial) as well as a pixel-level forgery mask.</em>
 </p>
 
-
----
-
-## 📊 Results
-### 🔹 Forgery Detection and Localization 
-<p align="center">
-  <img src="src/forgery_detection.png" width="800"><br>
-  <em>Table 1: Image-level forgery detection performance (ACC). First and second ranking are highlighted in bold and underline, respectively.</em>
-</p>
-<p align="center">
-  <img src="src/forgery_localization.png" width="800"><br>
-  <em>Table 2: Pixel-level forgery localization performance (F1). First and second ranking are highlighted in bold and underline, respectively.</em>
-</p>
-
-### 🔹 Adversarial Robustness
-<p align="center">
-  <img src="src/adversarial_robustness.png" width="800"><br>
-  <em>Figure 2: Comparison of forgery localization before and after  adversarial attack. Red denotes the predicted forged regions.</em>
-</p>
-
-
-More results and ablation studies are available in the paper.
-
----
-
-## ⚙️ Installation
-```bash
-git clone https://github.com/siriusPRX/ForensicsSAM.git
-cd your-repo/ForensicsSAM
-conda create -n ForensicsSAM python=3.9
-conda activate ForensicsSAM
-pip install -r requirements.txt
-```
-
----
-
-## 📌 Dataset and Weight Preparation
-1. Download the datasets listed below:
-
-| Dataset           | Real  | Forged  | SP | CM | INP |
-|-------------------|-------|---------|----|----|-----|
-| **Train**         |       |         |    |    |     |
-| CASIAv2           | 7491  | 5098    | ✓  | ✓  |     |
-| IMD20             | 414   | 2000    | ✓  | ✓  |     |
-| FantasticReality  | 16592 | 19423   | ✓  |    |    |
-| TamperedCR        | 24462 | 23981   | ✓  | ✓  |    |
-| **Test**          |       |         |    |    |     |
-| CASIAv1+          | 800   | 920     | ✓  | ✓  |     |
-| MISD              | 620   | 296     | ✓  |   |     |
-| Columbia          | 183   | 180     | ✓  |   |     |
-| DSO-1             | 100   | 100     | ✓  |   |     |
-| Coverage          | 100   | 100     |   | ✓  |    |
-| NIST              | 875   | 564     | ✓  | ✓  | ✓    |
-| CocoGlide         | 512   | 512     |   |    | ✓   |
-| IPM15k            | -     | 15000   | ✓  | ✓  |    |
-| ACDSee            | 364   | 337     | ✓  | ✓  | ✓  |
-| In-the-wild       | -     | 201     | ✓  |    |    |
-
-2. Organize the folders as:
-```
-data/
-  ├── acdsee.txt
-  ├── acdsee_au.txt
-  ├── casia1.txt
-  ├── casia1_au.txt
-  ├── CocoGlide.txt
-  ├── cocoglide_au.txt
-  ├── columbia.txt
-  ├── columbia_au.txt
-  ├── coverage.txt
-  ├── coverage_au.txt
-  ├── dso.txt
-  ├── dso_au.txt
-  ├── ipm15k.txt
-  ├── misd.txt
-  ├── misd_au.txt
-  ├── nist16.txt
-  ├── nist16_au.txt
-  ├── wild.txt
-```
-
 ```
 weight/
   ├── adversary_detector.pth
@@ -146,6 +65,11 @@ weight/
 3. you can download the pre-trained weight from [google drive](https://drive.google.com/file/d/1stLg8bJ1W2E7dVAHC8TYj917REO4sttt/view)
 ---
 
+## 💻 Training
+```bash
+python train.py
+```
+
 ## 💻 Inference
 ```bash
 python inference.py
@@ -155,16 +79,3 @@ python inference.py
 
 ## 🙏 Acknowledgement
 - This work is built upon the [SAM](https://github.com/facebookresearch/segment-anything).
-
----
-
-## 🌟 Citation
-If you find our work useful, please cite:
-```bibtex
-@article{peng2025forensicssam,
-  title={ForensicsSAM: Toward Robust and Unified Image Forgery Detection and Localization Resisting to Adversarial Attack},
-  author={Peng, Rongxuan and Tan, Shunquan and Kong, Chenqi and Luo, Anwei and Kot, Alex C and Huang, Jiwu},
-  journal={arXiv preprint arXiv:2508.07402},
-  year={2025}
-}
-```
